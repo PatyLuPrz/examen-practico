@@ -70,7 +70,7 @@
                     <td><?php echo $ingresos['TELEFONO'] ?></td>
                     <td><?php echo $ingresos['FECHA_INGRESO'] ?></td>
                     <td><?php echo $ingresos['HORA_INGRESO'] ?></td>
-                    <td><a class="btn btn-danger" href="#" role="button">Registrar egreso</a> </td>
+                    <td><a class="btn btn-danger" href="../../src/egresos.php?ID=<?php echo $ingresos['ID'] ?>">Registrar egreso</a> </td>
                 </tr>
             <?php } ?>
             </tbody>
