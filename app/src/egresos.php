@@ -74,11 +74,11 @@ Github: https://github.com/PatyLuPrz -->
                     <input type="time" name="HORA_INGRESO" id="HORA_INGRESO" class="form-control" value=<?php echo $ingresos['HORA_INGRESO']; ?> readonly required>
                 </div>
                 <div class="form-group">
-                    <label for="FECHA_EGRESO">Fecha de ingreso del vehiculo</label>
+                    <label for="FECHA_EGRESO">Fecha de egreso del vehiculo</label>
                     <input type="date" name="FECHA_EGRESO" id="FECHA_EGRESO" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="HORA_EGRESO">Hora de ingreso del vehiculo</label>
+                    <label for="HORA_EGRESO">Hora de egreso del vehiculo</label>
                     <input type="time" name="HORA_EGRESO" id="HORA_EGRESO" class="form-control" required>
                 </div><br>
                 <div class="row">

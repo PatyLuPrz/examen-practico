@@ -57,11 +57,11 @@ Github: https://github.com/PatyLuPrz -->
                     <input type="number" name="TELEFONO" id="TELEFONO" class="form-control" placeholder="7751326996" required>
                 </div>
                 <div class="form-group">
-                    <label for="FECHA_INGRESO">Placa de vehiculo</label>
+                    <label for="FECHA_INGRESO">Fecha de ingreso del vehiculo</label>
                     <input type="date" name="FECHA_INGRESO" id="FECHA_INGRESO" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="HORA_INGRESO">Placa de vehiculo</label>
+                    <label for="HORA_INGRESO">Hora de ingreso del vehiculo</label>
                     <input type="time" name="HORA_INGRESO" id="HORA_INGRESO" class="form-control" required>
                 </div><br>
                 <div class="row">
