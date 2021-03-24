@@ -1,3 +1,6 @@
+<!-- Autor: Patricia Perez
+Email: may.patrics@gmail.com
+Github: https://github.com/PatyLuPrz -->
 <?php 
     include '../conection.php';
 
@@ -20,7 +23,7 @@
 
     echo $intervalo->format('%Y años %m meses %d days %H horas %i minutos %s segundos');
     echo "<br>";
-
+    $INTERVALO_TRANSCURRIDO = $intervalo->format('%Y años %m meses %d dias %H horas %i minutos %s segundos');
     
     $intervalo_años = $intervalo->y;
     $intervalo_meses = $intervalo->m;
@@ -43,21 +46,72 @@
     $egreso_minuto = $fecha2->format('i');
     $egreso_segundo = $fecha2->format('s');
 
-    
-    
-    
 
+    if($ingreso_hora == 20 && $ingreso_minuto < 50){
+        echo "primer primer if". "<br>";
+        $ingreso_hora = 21;
+        $ingreso_minuto = 00;
+    }
+
+    if ($FECHA_INGRESO == $FECHA_EGRESO){
+        if (($intervalo_horas >= 1) || ($intervalo_minutos >= 15)){
+            if (($ingreso_hora > 9 && $ingreso_minuto > 0) && ($ingreso_hora < 20 && $ingreso_hora < 59)){
+                if($egreso_hora <= 20 && $egreso_minuto <= 59){
+                    $a = $intervalo_horas * 10;
+                    $b = ($intervalo_minutos/60) * 10;
+                    $TOTAL = $a+$b;
+                }elseif($egreso_hora >= 21 && $egreso_minuto <= 00){
+                    echo "primer elseif" . "<br>";
+                    $HD = 21 - $ingreso_hora;
+                    $a = ($intervalo_minutos/60) * 10;
+                    $b = $HD * 10;
+                    $c = ($egreso_hora - 21) * 50;
+                    $TOTAL = $a + $b + $c;
+                }
+            }else{
+                if($ingreso_hora <= 8 && $ingreso_minuto <=59){
+                    if($egreso_hora <= 8 && $egreso_minuto <=59){
+                        $a = $intervalo_horas * 50;
+                        $b = ($intervalo_minutos / 60) * 50;
+                        $TOTAL = $a + $b;
+                    }
+                    elseif($egreso_hora <= 20 && $egreso_minuto <= 59){
+                        $a = ($intervalo_horas - $HN) * 10;
+                        $b = $HN * 50;
+                        $c = ($intervalo_minutos/60) * 10;
+                        $TOTAL = $a + $b + $c;
+                    }elseif($egreso_hora >= 21 && $egreso_minuto >= 00){
+                        $HD = 21 - $ingreso_hora - $HN;
+                        $a = ($intervalo_minutos/60) * 10;
+                        $b = $HD * 10;
+                        $c = (($egreso_hora - 21) + $HN) * 50;
+                        $TOTAL = $a + $b + $c;
+                    }
+                }
+            }
+        }else{
+            $TOTAL = 0;
+        }
+    }else{
+        $a = ($intervalo_años * 365) * 24;
+        $b = ($intervalo_meses * 31) * 24;
+        $c = $intervalo_dias * 24;
+        $d = $intervalo_horas;
+        $e = $intervalo_minutos / 60;
+        $HD = ($a + $b + $c + $d + $e) / 2;
+        $HN = ($a + $b + $c + $d +$e) / 2;
+        $TOTAL = ($HD * 10) + ($HN * 50);
+    }
     
-    // $TOTAL = 15.0;
     
-    // $delete = "DELETE FROM ingresos WHERE ID = '$ID_INGRESO';";
-    // if(mysqli_query($conection,$delete)){
-    //     $sql = "INSERT INTO egresos(PLACA,NOMBRE,TELEFONO,FECHA_EGRESO,HORA_EGRESO,TOTAL) VALUES ('$PLACA','$NOMBRE','$TELEFONO','$FECHA_EGRESO','$HORA_EGRESO','$TOTAL');";
-    //     if(mysqli_query($conection,$sql)){
-    //         echo "todo bien, todo correcto";
-    //     }else {
-    //         echo "Error: " . $sql . "<br>" . mysqli_error($conection);
-    //     }   
-    // }
-    // mysqli_close($conection);
+    $delete = "DELETE FROM ingresos WHERE ID = '$ID_INGRESO';";
+    if(mysqli_query($conection,$delete)){
+        $sql = "INSERT INTO egresos(PLACA,NOMBRE,TELEFONO,FECHA_INGRESO,HORA_INGRESO,FECHA_EGRESO,HORA_EGRESO,INTERVALO,TOTAL) VALUES ('$PLACA','$NOMBRE','$TELEFONO','$FECHA_INGRESO','$HORA_INGRESO','$FECHA_EGRESO','$HORA_EGRESO','$INTERVALO_TRANSCURRIDO','$TOTAL');";
+        if(mysqli_query($conection,$sql)){
+            header('Location: ../../data/egresos/egresos.php');
+        }else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conection);
+        }   
+    }
+    mysqli_close($conection);
 ?>

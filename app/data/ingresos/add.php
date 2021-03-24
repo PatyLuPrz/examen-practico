@@ -1,3 +1,6 @@
+<!-- Autor: Patricia Perez
+Email: may.patrics@gmail.com
+Github: https://github.com/PatyLuPrz -->
 <?php 
     include '../conection.php';
 
@@ -10,7 +13,7 @@
     $sql = "INSERT INTO ingresos(PLACA,NOMBRE,TELEFONO,FECHA_INGRESO,HORA_INGRESO) VALUES ('$PLACA','$NOMBRE','$TELEFONO','$FECHA_INGRESO','$HORA_INGRESO');";
     
     if(mysqli_query($conection,$sql)){
-        echo "todo bien, todo correcto";
+        header('Location:ingresos.php');
     }else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conection);
     }

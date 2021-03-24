@@ -1,3 +1,6 @@
+<!-- Autor: Patricia Perez
+Email: may.patrics@gmail.com
+Github: https://github.com/PatyLuPrz -->
 <?php
     include '../data/conection.php';
     $ID = $_GET['ID'];
@@ -12,6 +15,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="../../static/img/estacionamiento.png"/>
     <title>Estacionamientos ACME</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -19,7 +23,7 @@
 <body>
 <!-- Header -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="#">Estacionamientos ACME</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,13 +31,13 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../../index.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ingresos</a>
+                        <a class="nav-link" href="../data/ingresos/ingresos.php">Ingresos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Egresos</a>
+                        <a class="nav-link" href="../data/egresos/egresos.php">Egresos</a>
                     </li>
                 </ul>
             </div>
@@ -77,9 +81,19 @@
                     <label for="HORA_EGRESO">Hora de ingreso del vehiculo</label>
                     <input type="time" name="HORA_EGRESO" id="HORA_EGRESO" class="form-control" required>
                 </div><br>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-dark" type="submit">Registrar egreso</button>
-                </div><br><br>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="d-grid gap-2">
+                        <a class="btn btn-outline-dark" href="../data/ingresos/ingresos.php">Cancelar</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-dark" type="submit">Registrar nuevo egreso</button>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
             </form>
         </div>
     </div>
